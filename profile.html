@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Profile - Todo Pro</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span>✓</span>
+
+            Todo Pro
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+                📊 Dashboard
+            </a>
+
+            <a href="tasks.html">
+                📝 Tasks
+            </a>
+
+            <a href="calendar.html">
+                📅 Calendar
+            </a>
+
+            <a href="history.html">
+                🕘 History
+            </a>
+
+            <a
+                href="profile.html"
+                class="active"
+            >
+                👤 Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+
+    <main class="main">
+
+
+        <header class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <h2>
+                    Profile
+                </h2>
+
+                <p>
+                    Manage your account
+                </p>
+
+            </div>
+
+
+            <button
+                class="theme-btn"
+                onclick="toggleTheme()"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+
+        <section class="profile-grid">
+
+
+            <div class="panel profile-card">
+
+                <div
+                    class="avatar"
+                    id="profileAvatar"
+                >
+                    A
+                </div>
+
+
+                <h2 id="profileDisplayName">
+                    User
+                </h2>
+
+
+                <p id="profileDisplayEmail">
+                    email@example.com
+                </p>
+
+            </div>
+
+
+
+            <div class="panel">
+
+                <h3>
+                    Profile Settings
+                </h3>
+
+
+                <form id="profileForm">
+
+                    <label>
+                        Full Name
+                    </label>
+
+
+                    <input
+                        id="profileName"
+                        type="text"
+                        required
+                    >
+
+
+                    <label>
+                        Email
+                    </label>
+
+
+                    <input
+                        id="profileEmail"
+                        type="email"
+                        required
+                    >
+
+
+                    <button
+                        class="primary-btn"
+                        type="submit"
+                    >
+                        Save Changes
+                    </button>
+
+                </form>
+
+
+                <p
+                    id="profileMessage"
+                    class="form-message"
+                ></p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<nav class="mobile-bottom-nav">
+
+    <a href="dashboard.html">
+
+        <span>🏠</span>
+        Home
+
+    </a>
+
+
+    <a href="tasks.html">
+
+        <span>📝</span>
+        Tasks
+
+    </a>
+
+
+    <a href="calendar.html">
+
+        <span>📅</span>
+        Calendar
+
+    </a>
+
+
+    <a href="history.html">
+
+        <span>🕘</span>
+        History
+
+    </a>
+
+
+    <a
+        href="profile.html"
+        class="active"
+    >
+
+        <span>👤</span>
+        Profile
+
+    </a>
+
+</nav>
+
+
+
+<script src="js/app.js"></script>
+
+<script src="js/profile.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar - Todo Pro</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span>✓</span>
+          Todo Pro
+        </div>
+
+        <nav>
+          <a href="dashboard.html">📊 Dashboard</a>
+          <a href="tasks.html">📝 Tasks</a>
+          <a class="active" href="calendar.html">📅 Calendar</a>
+          <a href="history.html">🕘 History</a>
+          <a href="profile.html">👤 Profile</a>
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+          <div>
+            <h2>Calendar</h2>
+            <p>View your tasks by date</p>
+          </div>
+
+          <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+        </header>
+
+        <section class="panel">
+          <div class="calendar-head">
+            <button onclick="changeMonth(-1)">←</button>
+
+            <h2 id="calendarTitle"></h2>
+
+            <button onclick="changeMonth(1)">→</button>
+          </div>
+
+          <div class="calendar-week">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+
+          <div id="calendarGrid" class="calendar-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/app.js"></script>
+
+    <script>
+      let calendarDate = new Date();
+
+      function getTasks() {
+        return JSON.parse(localStorage.getItem("todoTasksPro") || "[]");
+      }
+
+      function renderCalendar() {
+        const year = calendarDate.getFullYear();
+        const month = calendarDate.getMonth();
+
+        const title = document.getElementById("calendarTitle");
+
+        title.textContent = calendarDate.toLocaleString("default", {
+          month: "long",
+          year: "numeric",
+        });
+
+        const grid = document.getElementById("calendarGrid");
+
+        grid.innerHTML = "";
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const days = new Date(year, month + 1, 0).getDate();
+
+        const tasks = getTasks();
+
+        for (let i = 0; i < firstDay; i++) {
+          const empty = document.createElement("div");
+          empty.className = "calendar-day empty";
+          grid.appendChild(empty);
+        }
+
+        for (let day = 1; day <= days; day++) {
+          const cell = document.createElement("div");
+          cell.className = "calendar-day";
+
+          const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+          const dayTasks = tasks.filter((t) => t.dueDate === dateString);
+
+          cell.innerHTML = `<strong>${day}</strong>`;
+
+          dayTasks.slice(0, 3).forEach((task) => {
+            const item = document.createElement("div");
+
+            item.className =
+              "calendar-task " + (task.completed ? "completed" : "");
+
+            item.textContent = task.title;
+
+            cell.appendChild(item);
+          });
+
+          grid.appendChild(cell);
+        }
+      }
+
+      function changeMonth(value) {
+        calendarDate.setMonth(calendarDate.getMonth() + value);
+
+        renderCalendar();
+      }
+
+      renderCalendar();
+    </script>
+  </body>
+</html>

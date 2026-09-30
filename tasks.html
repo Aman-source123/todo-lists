@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tasks - Todo Pro</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span>✓</span>
+
+            Todo Pro
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+                📊 Dashboard
+            </a>
+
+            <a
+                href="tasks.html"
+                class="active"
+            >
+                📝 Tasks
+            </a>
+
+            <a href="calendar.html">
+                📅 Calendar
+            </a>
+
+            <a href="history.html">
+                🕘 History
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+
+    <main class="main">
+
+
+        <header class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <h2>
+                    My Tasks
+                </h2>
+
+                <p>
+                    Manage your daily work
+                </p>
+
+            </div>
+
+
+            <button
+                class="theme-btn"
+                onclick="toggleTheme()"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+
+        <!-- ADD TASK -->
+
+        <section class="panel">
+
+            <form
+                id="taskForm"
+                class="task-form"
+            >
+
+                <input
+                    type="hidden"
+                    id="editId"
+                >
+
+
+                <input
+                    type="text"
+                    id="taskTitle"
+                    placeholder="What needs to be done?"
+                    required
+                >
+
+
+                <select id="taskCategory">
+
+                    <option value="Work">
+                        Work
+                    </option>
+
+                    <option value="Study">
+                        Study
+                    </option>
+
+                    <option value="Personal">
+                        Personal
+                    </option>
+
+                    <option value="Shopping">
+                        Shopping
+                    </option>
+
+                    <option value="Health">
+                        Health
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <select id="taskPriority">
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                    <option
+                        value="Medium"
+                        selected
+                    >
+                        Medium
+                    </option>
+
+                    <option value="High">
+                        High
+                    </option>
+
+                </select>
+
+
+                <input
+                    type="date"
+                    id="taskDueDate"
+                >
+
+
+                <button
+                    class="primary-btn"
+                    type="submit"
+                    id="taskSubmitBtn"
+                >
+                    Add Task
+                </button>
+
+            </form>
+
+
+            <textarea
+                id="taskNotes"
+                class="notes-input"
+                placeholder="Task notes (optional)"
+            ></textarea>
+
+
+        </section>
+
+
+
+        <!-- SEARCH -->
+
+        <section class="toolbar">
+
+
+            <input
+                type="text"
+                id="searchTask"
+                placeholder="🔍 Search tasks..."
+            >
+
+
+            <select id="statusFilter">
+
+                <option value="all">
+                    All
+                </option>
+
+                <option value="active">
+                    Active
+                </option>
+
+                <option value="completed">
+                    Completed
+                </option>
+
+                <option value="overdue">
+                    Overdue
+                </option>
+
+                <option value="important">
+                    Important
+                </option>
+
+                <option value="pinned">
+                    Pinned
+                </option>
+
+            </select>
+
+
+            <select id="sortTasks">
+
+                <option value="newest">
+                    Newest
+                </option>
+
+                <option value="oldest">
+                    Oldest
+                </option>
+
+                <option value="priority">
+                    Priority
+                </option>
+
+                <option value="due">
+                    Due Date
+                </option>
+
+            </select>
+
+
+        </section>
+
+
+
+        <section
+            id="taskList"
+            class="task-list"
+        ></section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<nav class="mobile-bottom-nav">
+
+    <a href="dashboard.html">
+
+        <span>🏠</span>
+        Home
+
+    </a>
+
+
+    <a
+        href="tasks.html"
+        class="active"
+    >
+
+        <span>📝</span>
+        Tasks
+
+    </a>
+
+
+    <a href="calendar.html">
+
+        <span>📅</span>
+        Calendar
+
+    </a>
+
+
+    <a href="history.html">
+
+        <span>🕘</span>
+        History
+
+    </a>
+
+
+    <a href="profile.html">
+
+        <span>👤</span>
+        Profile
+
+    </a>
+
+</nav>
+
+
+
+<script src="js/app.js"></script>
+
+<script src="js/tasks.js"></script>
+
+
+</body>
+
+</html>

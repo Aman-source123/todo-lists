@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard - Todo Pro</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span>✓</span>
+
+            Todo Pro
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="dashboard.html"
+                class="active"
+            >
+                📊 Dashboard
+            </a>
+
+            <a href="tasks.html">
+                📝 Tasks
+            </a>
+
+            <a href="calendar.html">
+                📅 Calendar
+            </a>
+
+            <a href="history.html">
+                🕘 History
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <header class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <h2>
+                    Dashboard
+                </h2>
+
+                <p id="welcomeText">
+                    Welcome back!
+                </p>
+
+            </div>
+
+
+            <button
+                class="theme-btn"
+                onclick="toggleTheme()"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+
+        <!-- STATS -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <span>📋</span>
+
+                <div>
+
+                    <small>
+                        Total Tasks
+                    </small>
+
+                    <h2 id="totalTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>⏳</span>
+
+                <div>
+
+                    <small>
+                        Active
+                    </small>
+
+                    <h2 id="activeTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>✅</span>
+
+                <div>
+
+                    <small>
+                        Completed
+                    </small>
+
+                    <h2 id="completedTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>⚠️</span>
+
+                <div>
+
+                    <small>
+                        Overdue
+                    </small>
+
+                    <h2 id="overdueTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- PRODUCTIVITY -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Productivity
+                    </h3>
+
+                </div>
+
+
+                <div
+                    class="progress-large"
+                    id="progressCircleBox"
+                >
+
+                    <div id="progressCircle">
+                        0%
+                    </div>
+
+                </div>
+
+
+                <p class="center-text">
+                    Task Completion Rate
+                </p>
+
+            </div>
+
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Category Overview
+                    </h3>
+
+                </div>
+
+
+                <div id="categoryChart"></div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- WEEKLY + QUICK ACTION -->
+
+        <section class="dashboard-two-column">
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Weekly Productivity
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="weeklyChart"
+                    class="weekly-chart"
+                ></div>
+
+            </div>
+
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Quick Actions
+                    </h3>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+
+                    <div
+                        class="quick-action"
+                        onclick="location.href='tasks.html'"
+                    >
+
+                        <span class="quick-action-icon">
+                            ➕
+                        </span>
+
+                        Add Task
+
+                    </div>
+
+
+                    <div
+                        class="quick-action"
+                        onclick="location.href='calendar.html'"
+                    >
+
+                        <span class="quick-action-icon">
+                            📅
+                        </span>
+
+                        Calendar
+
+                    </div>
+
+
+                    <div
+                        class="quick-action"
+                        onclick="location.href='history.html'"
+                    >
+
+                        <span class="quick-action-icon">
+                            📜
+                        </span>
+
+                        History
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- RECENT -->
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <h3>
+                    Recent Tasks
+                </h3>
+
+                <a
+                    href="tasks.html"
+                    class="view-link"
+                >
+                    View All
+                </a>
+
+            </div>
+
+
+            <div id="recentTasks"></div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- MOBILE NAV -->
+
+<nav class="mobile-bottom-nav">
+
+    <a
+        href="dashboard.html"
+        class="active"
+    >
+
+        <span>🏠</span>
+
+        Home
+
+    </a>
+
+
+    <a href="tasks.html">
+
+        <span>📝</span>
+
+        Tasks
+
+    </a>
+
+
+    <a href="calendar.html">
+
+        <span>📅</span>
+
+        Calendar
+
+    </a>
+
+
+    <a href="history.html">
+
+        <span>🕘</span>
+
+        History
+
+    </a>
+
+
+    <a href="profile.html">
+
+        <span>👤</span>
+
+        Profile
+
+    </a>
+
+</nav>
+
+
+
+<script src="js/app.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>

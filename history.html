@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>History - Todo Pro</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <span>✓</span>
+
+            Todo Pro
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+                📊 Dashboard
+            </a>
+
+            <a href="tasks.html">
+                📝 Tasks
+            </a>
+
+            <a href="calendar.html">
+                📅 Calendar
+            </a>
+
+            <a
+                href="history.html"
+                class="active"
+            >
+                🕘 History
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+
+    <main class="main">
+
+
+        <header class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <h2>
+                    Task History
+                </h2>
+
+                <p>
+                    Your completed tasks
+                </p>
+
+            </div>
+
+
+            <button
+                class="theme-btn"
+                onclick="toggleTheme()"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+
+        <section class="panel">
+
+            <div id="historyList"></div>
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<nav class="mobile-bottom-nav">
+
+    <a href="dashboard.html">
+
+        <span>🏠</span>
+        Home
+
+    </a>
+
+
+    <a href="tasks.html">
+
+        <span>📝</span>
+        Tasks
+
+    </a>
+
+
+    <a href="calendar.html">
+
+        <span>📅</span>
+        Calendar
+
+    </a>
+
+
+    <a
+        href="history.html"
+        class="active"
+    >
+
+        <span>🕘</span>
+        History
+
+    </a>
+
+
+    <a href="profile.html">
+
+        <span>👤</span>
+        Profile
+
+    </a>
+
+</nav>
+
+
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+function renderHistory() {
+
+    const tasks =
+        getTasks();
+
+
+    const completed =
+        tasks.filter(
+            task => task.completed
+        );
+
+
+    const container =
+        document.getElementById(
+            "historyList"
+        );
+
+
+    if (!completed.length) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <h3>
+                    No completed tasks
+                </h3>
+
+                <p>
+                    Completed tasks will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    completed.sort(
+        (a, b) =>
+            (b.completedAt || 0)
+            -
+            (a.completedAt || 0)
+    );
+
+
+    container.innerHTML =
+        completed.map(task => `
+
+            <div class="history-item">
+
+                <div>
+
+                    <h3>
+                        ${escapeHTML(task.title)}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(task.category)}
+                        •
+                        ${escapeHTML(task.priority)}
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        ✓ Completed
+                    </strong>
+
+                    <small>
+
+                        ${
+                            task.completedAt
+                                ? new Date(
+                                    task.completedAt
+                                ).toLocaleString()
+                                : ""
+                        }
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+renderHistory();
+
+</script>
+
+
+</body>
+
+</html>

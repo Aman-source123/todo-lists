@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Signup - Todo Pro</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="auth-page">
+
+
+<div class="auth-box">
+
+    <div class="auth-logo">
+        ✓
+    </div>
+
+
+    <h1>Create Account</h1>
+
+    <p class="auth-subtitle">
+        Start organizing your work
+    </p>
+
+
+    <form id="signupForm">
+
+        <label>Full Name</label>
+
+        <input
+            type="text"
+            id="signupName"
+            placeholder="Enter your name"
+            required
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create password"
+            required
+        >
+
+
+        <label>Confirm Password</label>
+
+        <input
+            type="password"
+            id="signupConfirm"
+            placeholder="Confirm password"
+            required
+        >
+
+
+        <button
+            type="submit"
+            class="primary-btn full-btn"
+        >
+            Create Account
+        </button>
+
+
+        <p
+            id="signupMessage"
+            class="form-message"
+        ></p>
+
+    </form>
+
+
+    <p class="auth-link">
+
+        Already have an account?
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </p>
+
+</div>
+
+
+<script src="js/auth.js"></script>
+
+</body>
+</html>
