@@ -1556,7 +1556,7 @@ a {
    PROFILE
 ===================================== */
 
-/* .profile-grid {
+.profile-grid {
 
     display:
         grid;
@@ -1621,7 +1621,7 @@ a {
     color:
         var(--muted);
 
-} */
+}
 
 
 
@@ -2202,12 +2202,12 @@ a {
 
     /* PROFILE */
 
-   /* .profile-card {
+   .profile-card {
 
         padding:
             25px 15px;
 
-    }  */
+    } 
 
 
 
