@@ -1,250 +1,250 @@
-// function getUsers() {
+function getUsers() {
 
-//     return JSON.parse(
-//         localStorage.getItem("todoUsers") || "[]"
-//     );
+    return JSON.parse(
+        localStorage.getItem("todoUsers") || "[]"
+    );
 
-// }
+}
 
 
-// function saveUsers(users) {
+function saveUsers(users) {
 
-//     localStorage.setItem(
-//         "todoUsers",
-//         JSON.stringify(users)
-//     );
+    localStorage.setItem(
+        "todoUsers",
+        JSON.stringify(users)
+    );
 
-// }
+}
 
 
 
-// /* =========================
-//    SIGNUP
-// ========================= */
+/* =========================
+   SIGNUP
+========================= */
 
-// const signupForm =
-//     document.getElementById(
-//         "signupForm"
-//     );
+const signupForm =
+    document.getElementById(
+        "signupForm"
+    );
 
 
-// if (signupForm) {
+if (signupForm) {
 
-//     signupForm.addEventListener(
-//         "submit",
-//         function(event) {
+    signupForm.addEventListener(
+        "submit",
+        function(event) {
 
-//             event.preventDefault();
+            event.preventDefault();
 
 
-//             const name =
-//                 document
-//                     .getElementById(
-//                         "signupName"
-//                     )
-//                     .value
-//                     .trim();
+            const name =
+                document
+                    .getElementById(
+                        "signupName"
+                    )
+                    .value
+                    .trim();
 
 
-//             const email =
-//                 document
-//                     .getElementById(
-//                         "signupEmail"
-//                     )
-//                     .value
-//                     .trim();
+            const email =
+                document
+                    .getElementById(
+                        "signupEmail"
+                    )
+                    .value
+                    .trim();
 
 
-//             const password =
-//                 document.getElementById(
-//                     "signupPassword"
-//                 ).value;
+            const password =
+                document.getElementById(
+                    "signupPassword"
+                ).value;
 
 
-//             const confirm =
-//                 document.getElementById(
-//                     "signupConfirm"
-//                 ).value;
+            const confirm =
+                document.getElementById(
+                    "signupConfirm"
+                ).value;
 
 
-//             const message =
-//                 document.getElementById(
-//                     "signupMessage"
-//                 );
+            const message =
+                document.getElementById(
+                    "signupMessage"
+                );
 
 
-//             if (password !== confirm) {
+            if (password !== confirm) {
 
-//                 message.textContent =
-//                     "Passwords do not match.";
+                message.textContent =
+                    "Passwords do not match.";
 
-//                 message.className =
-//                     "form-message error";
+                message.className =
+                    "form-message error";
 
-//                 return;
+                return;
 
-//             }
+            }
 
 
-//             if (password.length < 6) {
+            if (password.length < 6) {
 
-//                 message.textContent =
-//                     "Password must contain at least 6 characters.";
+                message.textContent =
+                    "Password must contain at least 6 characters.";
 
-//                 message.className =
-//                     "form-message error";
+                message.className =
+                    "form-message error";
 
-//                 return;
+                return;
 
-//             }
+            }
 
 
-//             const users =
-//                 getUsers();
+            const users =
+                getUsers();
 
 
-//             const exists =
-//                 users.some(
-//                     user =>
-//                         user.email.toLowerCase()
-//                         ===
-//                         email.toLowerCase()
-//                 );
+            const exists =
+                users.some(
+                    user =>
+                        user.email.toLowerCase()
+                        ===
+                        email.toLowerCase()
+                );
 
 
-//             if (exists) {
+            if (exists) {
 
-//                 message.textContent =
-//                     "Email already registered.";
+                message.textContent =
+                    "Email already registered.";
 
-//                 message.className =
-//                     "form-message error";
+                message.className =
+                    "form-message error";
 
-//                 return;
+                return;
 
-//             }
+            }
 
 
-//             const newUser = {
+            const newUser = {
 
-//                 id: Date.now(),
+                id: Date.now(),
 
-//                 name,
+                name,
 
-//                 email,
+                email,
 
-//                 password
+                password
 
-//             };
+            };
 
 
-//             users.push(newUser);
+            users.push(newUser);
 
-//             saveUsers(users);
+            saveUsers(users);
 
 
-//             message.textContent =
-//                 "Account created successfully!";
+            message.textContent =
+                "Account created successfully!";
 
-//             message.className =
-//                 "form-message success";
+            message.className =
+                "form-message success";
 
 
-//             setTimeout(
-//                 () => {
+            setTimeout(
+                () => {
 
-//                     window.location.href =
-//                         "login.html";
+                    window.location.href =
+                        "login.html";
 
-//                 },
-//                 1000
-//             );
+                },
+                1000
+            );
 
-//         }
-//     );
+        }
+    );
 
-// }
+}
 
 
 
-// /* =========================
-//    LOGIN
-// ========================= */
+/* =========================
+   LOGIN
+========================= */
 
-// const loginForm =
-//     document.getElementById(
-//         "loginForm"
-//     );
+const loginForm =
+    document.getElementById(
+        "loginForm"
+    );
 
 
-// if (loginForm) {
+if (loginForm) {
 
-//     loginForm.addEventListener(
-//         "submit",
-//         function(event) {
+    loginForm.addEventListener(
+        "submit",
+        function(event) {
 
-//             event.preventDefault();
+            event.preventDefault();
 
 
-//             const email =
-//                 document
-//                     .getElementById(
-//                         "loginEmail"
-//                     )
-//                     .value
-//                     .trim();
+            const email =
+                document
+                    .getElementById(
+                        "loginEmail"
+                    )
+                    .value
+                    .trim();
 
 
-//             const password =
-//                 document.getElementById(
-//                     "loginPassword"
-//                 ).value;
+            const password =
+                document.getElementById(
+                    "loginPassword"
+                ).value;
 
 
-//             const message =
-//                 document.getElementById(
-//                     "loginMessage"
-//                 );
+            const message =
+                document.getElementById(
+                    "loginMessage"
+                );
 
 
-//             const users =
-//                 getUsers();
+            const users =
+                getUsers();
 
 
-//             const user =
-//                 users.find(
-//                     item =>
-//                         item.email.toLowerCase()
-//                         ===
-//                         email.toLowerCase()
-//                         &&
-//                         item.password === password
-//                 );
+            const user =
+                users.find(
+                    item =>
+                        item.email.toLowerCase()
+                        ===
+                        email.toLowerCase()
+                        &&
+                        item.password === password
+                );
 
 
-//             if (!user) {
+            if (!user) {
 
-//                 message.textContent =
-//                     "Invalid email or password.";
+                message.textContent =
+                    "Invalid email or password.";
 
-//                 message.className =
-//                     "form-message error";
+                message.className =
+                    "form-message error";
 
-//                 return;
+                return;
 
-//             }
+            }
 
 
-//             localStorage.setItem(
-//                 "todoCurrentUser",
-//                 JSON.stringify(user)
-//             );
+            localStorage.setItem(
+                "todoCurrentUser",
+                JSON.stringify(user)
+            );
 
 
-//             window.location.href =
-//                 "dashboard.html";
+            window.location.href =
+                "dashboard.html";
 
-//         }
-//     );
+        }
+    );
 
-// }
+}
