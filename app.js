@@ -1,48 +1,48 @@
-// function getCurrentUser() {
+function getCurrentUser() {
 
-//     return JSON.parse(
-//         localStorage.getItem(
-//             "todoCurrentUser"
-//         ) || "null"
-//     );
+    return JSON.parse(
+        localStorage.getItem(
+            "todoCurrentUser"
+        ) || "null"
+    );
 
-// }
-
-
-
-// function requireAuth() {
-
-//     const user =
-//         getCurrentUser();
-
-
-//     if (!user) {
-
-//         window.location.href =
-//             "login.html";
-
-//         return null;
-
-//     }
-
-
-//     return user;
-
-// }
+}
 
 
 
-// function logout() {
+function requireAuth() {
 
-//     localStorage.removeItem(
-//         "todoCurrentUser"
-//     );
+    const user =
+        getCurrentUser();
 
 
-//     window.location.href =
-//         "login.html";
+    if (!user) {
 
-// }
+        window.location.href =
+            "login.html";
+
+        return null;
+
+    }
+
+
+    return user;
+
+}
+
+
+
+function logout() {
+
+    localStorage.removeItem(
+        "todoCurrentUser"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
 
 
 
