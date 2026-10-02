@@ -1,149 +1,149 @@
-// let user =
-//     getCurrentUser();
+let user =
+    getCurrentUser();
 
 
-// if (!user) {
+if (!user) {
 
-//     window.location.href =
-//         "login.html";
+    window.location.href =
+        "login.html";
 
-// }
-
-
-
-// function loadProfile() {
-
-//     document.getElementById(
-//         "profileName"
-//     ).value =
-//         user.name;
-
-
-//     document.getElementById(
-//         "profileEmail"
-//     ).value =
-//         user.email;
-
-
-//     document.getElementById(
-//         "profileDisplayName"
-//     ).textContent =
-//         user.name;
-
-
-//     document.getElementById(
-//         "profileDisplayEmail"
-//     ).textContent =
-//         user.email;
-
-
-//     document.getElementById(
-//         "profileAvatar"
-//     ).textContent =
-//         user.name
-//             .charAt(0)
-//             .toUpperCase();
-
-// }
+}
 
 
 
-// const profileForm =
-//     document.getElementById(
-//         "profileForm"
-//     );
+function loadProfile() {
+
+    document.getElementById(
+        "profileName"
+    ).value =
+        user.name;
 
 
-// profileForm?.addEventListener(
-//     "submit",
-//     function(event) {
-
-//         event.preventDefault();
-
-
-//         const name =
-//             document.getElementById(
-//                 "profileName"
-//             ).value.trim();
+    document.getElementById(
+        "profileEmail"
+    ).value =
+        user.email;
 
 
-//         const email =
-//             document.getElementById(
-//                 "profileEmail"
-//             ).value.trim();
+    document.getElementById(
+        "profileDisplayName"
+    ).textContent =
+        user.name;
 
 
-//         if (!name || !email) {
-
-//             return;
-
-//         }
-
-
-//         user.name =
-//             name;
+    document.getElementById(
+        "profileDisplayEmail"
+    ).textContent =
+        user.email;
 
 
-//         user.email =
-//             email;
+    document.getElementById(
+        "profileAvatar"
+    ).textContent =
+        user.name
+            .charAt(0)
+            .toUpperCase();
+
+}
 
 
 
-//         localStorage.setItem(
-//             "todoCurrentUser",
-//             JSON.stringify(user)
-//         );
+const profileForm =
+    document.getElementById(
+        "profileForm"
+    );
+
+
+profileForm?.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "profileName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "profileEmail"
+            ).value.trim();
+
+
+        if (!name || !email) {
+
+            return;
+
+        }
+
+
+        user.name =
+            name;
+
+
+        user.email =
+            email;
 
 
 
-//         const users =
-//             JSON.parse(
-//                 localStorage.getItem(
-//                     "todoUsers"
-//                 ) || "[]"
-//             );
-
-
-//         const index =
-//             users.findIndex(
-//                 item =>
-//                     item.id === user.id
-//             );
-
-
-//         if (index !== -1) {
-
-//             users[index] =
-//                 user;
-
-//         }
-
-
-//         localStorage.setItem(
-//             "todoUsers",
-//             JSON.stringify(users)
-//         );
+        localStorage.setItem(
+            "todoCurrentUser",
+            JSON.stringify(user)
+        );
 
 
 
-//         const message =
-//             document.getElementById(
-//                 "profileMessage"
-//             );
+        const users =
+            JSON.parse(
+                localStorage.getItem(
+                    "todoUsers"
+                ) || "[]"
+            );
 
 
-//         message.textContent =
-//             "Profile updated successfully.";
+        const index =
+            users.findIndex(
+                item =>
+                    item.id === user.id
+            );
 
 
-//         message.className =
-//             "form-message success";
+        if (index !== -1) {
+
+            users[index] =
+                user;
+
+        }
 
 
-//         loadProfile();
+        localStorage.setItem(
+            "todoUsers",
+            JSON.stringify(users)
+        );
 
-//     }
-// );
 
 
-// loadProfile();
+        const message =
+            document.getElementById(
+                "profileMessage"
+            );
+
+
+        message.textContent =
+            "Profile updated successfully.";
+
+
+        message.className =
+            "form-message success";
+
+
+        loadProfile();
+
+    }
+);
+
+
+loadProfile();
